@@ -1,14 +1,22 @@
-import { useState } from 'react';
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Auth from './pages/auth/Auth.jsx';
+import { BrowserRouter } from "react-router-dom";
+
+import { Toaster } from "sonner";
+
+import { AuthProvider } from "./contexts/AuthContext.jsx";
+
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Auth />} />
-        <Route path='/auth' element={<Auth />} />
-      </Routes>
+      <AuthProvider>
+        <Toaster 
+          position="top right" 
+          richColors
+        />
+
+        <AppRoutes />
+      </AuthProvider>
     </BrowserRouter>
   );
 };

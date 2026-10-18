@@ -37,7 +37,6 @@ const useGallery = () => {
 
       try { 
         const result = await addPhoto(
-          axiosPrivate,
           eventId,
           galleryPhotoData,
         );
@@ -56,7 +55,7 @@ const useGallery = () => {
         setAdding(false);
       }
     },
-    [axiosPrivate]);
+    []);
 
   const deleteGalleryPhoto = 
     useCallback(
@@ -69,7 +68,6 @@ const useGallery = () => {
 
         try { 
           const result = await deletePhoto(
-            axiosPrivate,
             eventId,
             galleryPhotoId,
           );
@@ -88,7 +86,7 @@ const useGallery = () => {
           setDeleting(false);
         }
       },
-      [axiosPrivate]);
+      []);
 
   const updateGalleryPhotoCaption = 
     useCallback(
@@ -102,7 +100,6 @@ const useGallery = () => {
 
         try { 
           const result = await updatePhotoCaption(
-            axiosPrivate,
             eventId,
             galleryPhotoId,
           );
@@ -121,7 +118,7 @@ const useGallery = () => {
           setUpdatingCaption(false);
         }
       },
-      [axiosPrivate]);
+      []);
   return { 
     adding,
     addError,

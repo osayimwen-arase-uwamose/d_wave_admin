@@ -1,0 +1,175 @@
+@utility shadow-neo {
+
+  box-shadow:
+    0 4px 14px rgba(2, 6, 23, 0.06);
+
+}
+
+
+@utility shadow-neo-sm {
+
+  box-shadow:
+    0 2px 8px rgba(2, 6, 23, 0.05);
+
+}
+
+
+@utility shadow-soft {
+
+  box-shadow:
+    0 4px 14px rgba(2, 6, 23, 0.06);
+
+}
+
+
+@utility shadow-soft-hover {
+
+  box-shadow:
+    0 10px 28px rgba(2, 6, 23, 0.10);
+
+}
+
+
+@utility shadow-button {
+
+  box-shadow:
+    0 4px 12px rgba(2, 6, 23, 0.16);
+
+}
+
+
+@utility shadow-button-hover {
+
+  box-shadow:
+    0 7px 18px rgba(2, 6, 23, 0.22);
+
+}
+
+
+@utility shadow-topbar {
+
+  box-shadow:
+    0 2px 12px rgba(2, 6, 23, 0.05);
+
+}
+
+
+@utility bg-grid {
+
+  background-size: 40px 40px;
+
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(203, 213, 225, 0.55) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(203, 213, 225, 0.55) 1px,
+      transparent 1px
+    );
+
+}
+
+
+@utility bg-primary-soft {
+
+  background-color: rgba(15, 23, 42, 0.05);
+
+}
+
+
+@utility bg-primary-soft-hover {
+
+  background-color: rgba(15, 23, 42, 0.08);
+
+}
+
+
+@utility glass {
+
+  background: rgba(255, 255, 255, 0.80);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(226, 232, 240, 0.80);
+
+}
+
+
+@utility text-mono-label {
+
+  font-family: var(--font-body);
+
+  font-size: var(--text-mono-label);
+
+  line-height: 1.4;
+
+  letter-spacing: 0.05em;
+
+}
+
+
+@utility text-mono-tiny {
+
+  font-family: var(--font-body);
+
+  font-size: var(--text-mono-tiny);
+
+  line-height: 1.4;
+
+  letter-spacing: 0.05em;
+
+}
+
+
+@utility neo-hover {
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+
+  &:hover {
+
+    box-shadow:
+      0 10px 28px rgba(2, 6, 23, 0.10);
+
+    transform: translateY(-2px);
+
+  }
+
+  &:active {
+
+    box-shadow:
+      0 4px 12px rgba(2, 6, 23, 0.06);
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+@utility tracking-display {
+
+  letter-spacing: -0.04em;
+
+}
+
+
+@utility tracking-label {
+
+  letter-spacing: 0.05em;
+
+}
+
+
+@utility rounded-card {
+
+  border-radius: 0.5rem;
+
+}

@@ -1,0 +1,861 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@import "./theme.css";
+
+@import "./utilities.css";
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  @apply
+    bg-background-light
+    text-text
+    font-body
+    antialiased;
+}
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   COMPONENT PRIMITIVES
+   ========================================================= */
+
+@layer components {
+
+  /* ---------------------------------------------------------
+     Card
+     --------------------------------------------------------- */
+
+  .card {
+    @apply
+      rounded-lg
+      border
+      border-slate-200
+      bg-white
+      shadow-soft;
+  }
+
+
+  /* ---------------------------------------------------------
+     Page / Section
+     --------------------------------------------------------- */
+
+  .page-container {
+    @apply
+      mx-auto
+      w-full
+      max-w-7xl
+      px-6
+      lg:px-8;
+  }
+
+  .section {
+    @apply
+      w-full
+      px-6
+      py-20
+      lg:px-8
+      lg:py-24;
+  }
+
+  .section-title {
+    @apply
+      font-display
+      text-4xl
+      font-bold
+      tracking-tight
+      text-primary;
+  }
+
+
+  /* ---------------------------------------------------------
+     Typography
+     --------------------------------------------------------- */
+
+  .heading-display {
+    @apply
+      font-display
+      text-display-xl
+      font-extrabold
+      leading-tight
+      tracking-display
+      text-primary;
+  }
+
+  .heading-lg {
+    @apply
+      font-display
+      text-headline-lg
+      font-bold
+      tracking-tight
+      text-primary;
+  }
+
+  .heading-sm {
+    @apply
+      font-display
+      text-headline-sm
+      font-bold
+      text-primary;
+  }
+
+  .body-lg {
+    @apply
+      font-body
+      text-body-lg
+      leading-relaxed
+      text-text-muted;
+  }
+
+  .body-md {
+    @apply
+      font-body
+      text-body-md
+      leading-relaxed
+      text-text-muted;
+  }
+
+
+  /* ---------------------------------------------------------
+     Form primitives
+     --------------------------------------------------------- */
+
+  .field-label {
+    @apply
+      mb-2
+      block
+      font-body
+      text-[13px]
+      font-semibold
+      uppercase
+      tracking-label
+      text-primary;
+  }
+
+  .input {
+    @apply
+      w-full
+      rounded
+      border
+      border-slate-300
+      bg-input-background
+      px-3
+      py-3
+      font-body
+      text-body-md
+      text-primary
+      outline-none
+      transition-all
+
+      placeholder:text-input-placeholder
+
+      focus:border-primary
+      focus:ring-2
+      focus:ring-primary/10;
+  }
+
+  .input-icon {
+    @apply
+      pl-10;
+  }
+
+  .input-icon-right {
+    @apply
+      pr-12;
+  }
+
+  .field-error {
+    @apply
+      text-sm
+      font-medium
+      text-error;
+  }
+
+
+  /* ---------------------------------------------------------
+     Primary interactive element
+     --------------------------------------------------------- */
+
+  .neo-button {
+    @apply
+      rounded
+      border
+      border-primary
+      bg-primary
+      text-white
+      shadow-button
+      transition-all
+      duration-200;
+  }
+
+  .neo-button:hover {
+    @apply
+      bg-brand-hover
+      shadow-button-hover;
+
+    transform: translateY(-1px);
+  }
+
+  .neo-button:active {
+    @apply
+      bg-brand-active
+      shadow-button;
+
+    transform: translateY(0);
+  }
+
+
+  /* ---------------------------------------------------------
+     Dashboard
+     --------------------------------------------------------- */
+
+  .dashboard-shell {
+    @apply
+      min-h-screen
+      flex
+      flex-col
+      bg-background-light
+      text-primary
+      font-body;
+  }
+
+  .dashboard-main {
+    @apply
+      flex
+      min-h-screen
+      flex-1
+      flex-col
+      md:ml-64;
+  }
+
+  .dashboard-content {
+    @apply
+      flex-1
+      p-6
+      lg:p-8;
+  }
+
+  .dashboard-container {
+    @apply
+      mx-auto
+      w-full
+      max-w-7xl;
+  }
+
+
+  /* ---------------------------------------------------------
+     Dashboard Sidebar
+     --------------------------------------------------------- */
+
+  .dashboard-sidebar {
+    @apply
+      fixed
+      left-0
+      top-0
+      z-40
+      hidden
+      h-screen
+      w-64
+      flex-col
+      border-r
+      border-slate-200
+      bg-white
+      md:flex;
+  }
+
+  .dashboard-sidebar-header {
+    @apply
+      border-b
+      border-slate-200
+      bg-white
+      p-6;
+  }
+
+  .dashboard-logo {
+    @apply
+      mb-4
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      border-2
+      border-primary
+      bg-white
+      text-xl
+      font-bold
+      text-primary
+      shadow-none;
+  }
+
+  .dashboard-sidebar-nav {
+    @apply
+      flex-1
+      space-y-1
+      overflow-y-auto
+      px-4
+      py-4;
+  }
+
+  .dashboard-nav-item {
+    @apply
+      flex
+      items-center
+      gap-3
+      rounded
+      border
+      border-transparent
+      px-4
+      py-3
+      font-body
+      text-sm
+      font-medium
+      text-slate-600
+      transition-all
+      duration-200;
+  }
+
+  .dashboard-nav-item:hover {
+    @apply
+      bg-slate-100
+      text-primary;
+  }
+
+  .dashboard-nav-item-active {
+    @apply
+      border-slate-200
+      bg-slate-100
+      text-primary
+      font-semibold;
+  }
+
+  .dashboard-sidebar-section {
+    @apply
+      border-t
+      border-slate-200
+      p-4;
+  }
+
+  .dashboard-logout {
+    @apply
+      flex
+      w-full
+      items-center
+      justify-center
+      gap-2
+      rounded
+      border
+      border-slate-200
+      bg-white
+      py-2.5
+      font-body
+      text-sm
+      font-medium
+      text-status-red
+      transition-all;
+  }
+
+  .dashboard-logout:hover {
+    @apply
+      border-red-200
+      bg-red-50;
+  }
+
+  .dashboard-help {
+    @apply
+      flex
+      items-center
+      gap-3
+      rounded
+      px-4
+      py-2
+      font-body
+      text-sm
+      text-slate-600
+      transition-all;
+  }
+
+  .dashboard-help:hover {
+    @apply
+      bg-slate-100
+      text-primary;
+  }
+
+
+  /* ---------------------------------------------------------
+     Dashboard Topbar
+     --------------------------------------------------------- */
+
+  .dashboard-topbar {
+    @apply
+      sticky
+      top-0
+      z-30
+      flex
+      w-full
+      items-center
+      justify-between
+      border-b
+      border-slate-200
+      bg-white/95
+      px-4
+      py-3
+      shadow-topbar
+      backdrop-blur-sm;
+  }
+
+  .dashboard-mobile-logo {
+    @apply
+      flex
+      h-8
+      w-8
+      items-center
+      justify-center
+      rounded-full
+      border-2
+      border-primary
+      bg-white
+      text-lg
+      font-bold
+      text-primary
+      md:hidden;
+  }
+
+  .dashboard-search-wrapper {
+    @apply
+      relative
+      hidden
+      w-full
+      max-w-md
+      md:ml-4
+      md:flex;
+  }
+
+  .dashboard-search-icon {
+    @apply
+      pointer-events-none
+      absolute
+      left-3
+      top-1/2
+      -translate-y-1/2
+      text-slate-400;
+  }
+
+  .dashboard-search {
+    @apply
+      w-full
+      rounded
+      border
+      border-slate-300
+      bg-slate-100
+      py-2.5
+      pl-10
+      pr-4
+      font-body
+      text-body-md
+      text-primary
+      outline-none
+      transition-all
+
+      focus:border-primary
+      focus:bg-white
+      focus:ring-2
+      focus:ring-primary/10;
+  }
+
+  .dashboard-topbar-actions {
+    @apply
+      ml-auto
+      flex
+      items-center
+      gap-2;
+  }
+
+  .dashboard-icon-button {
+    @apply
+      relative
+      rounded
+      border
+      border-transparent
+      p-2
+      text-slate-600
+      transition-all;
+  }
+
+  .dashboard-icon-button:hover {
+    @apply
+      border-slate-200
+      bg-slate-100
+      text-primary;
+  }
+
+  .notification-badge {
+    @apply
+      absolute
+      -right-1
+      -top-1
+      flex
+      h-4
+      w-4
+      items-center
+      justify-center
+      rounded-full
+      border-2
+      border-white
+      bg-status-red
+      text-[10px]
+      font-semibold
+      text-white;
+  }
+
+
+  /* ---------------------------------------------------------
+     Dashboard Page Header
+     --------------------------------------------------------- */
+
+  .dashboard-page-header {
+    @apply
+      mb-8
+      flex
+      flex-col
+      justify-between
+      gap-4
+      border-b
+      border-slate-200
+      pb-5
+      md:flex-row
+      md:items-end;
+  }
+
+  .dashboard-breadcrumb {
+    @apply
+      mb-2
+      flex
+      items-center
+      gap-2
+      font-body
+      text-xs
+      font-semibold
+      uppercase
+      tracking-label
+      text-slate-500;
+  }
+
+  .dashboard-page-title {
+    @apply
+      font-display
+      text-headline-lg
+      font-bold
+      tracking-tight
+      text-primary;
+  }
+
+  .dashboard-page-subtitle {
+    @apply
+      mt-2
+      font-body
+      text-sm
+      text-slate-500;
+  }
+
+  .dashboard-view-toggle {
+    @apply
+      flex
+      gap-2;
+  }
+
+  .dashboard-view-button {
+    @apply
+      flex
+      items-center
+      justify-center
+      rounded
+      border
+      border-slate-300
+      bg-white
+      p-2
+      text-slate-600
+      transition-colors;
+  }
+
+  .dashboard-view-button-active {
+    @apply
+      border-primary
+      bg-primary
+      text-white
+      shadow-button;
+  }
+
+
+  /* ---------------------------------------------------------
+     Hub Grid
+     --------------------------------------------------------- */
+
+  .hub-grid {
+    @apply
+      grid
+      grid-cols-1
+      gap-6
+      md:grid-cols-2
+      lg:grid-cols-3
+      xl:grid-cols-4;
+  }
+
+
+  /* ---------------------------------------------------------
+     Hub Card
+     --------------------------------------------------------- */
+
+  .hub-card {
+    @apply
+      flex
+      h-full
+      flex-col
+      rounded-lg
+      border
+      border-slate-200
+      bg-white
+      shadow-soft
+      transition-all
+      duration-200;
+  }
+
+  .hub-card:hover {
+    @apply
+      border-slate-300
+      shadow-soft-hover;
+
+    transform: translateY(-2px);
+  }
+
+  .hub-card-header {
+    @apply
+      flex
+      items-start
+      justify-between
+      p-5;
+  }
+
+  .hub-card-icon {
+    @apply
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      bg-slate-100
+      text-primary;
+  }
+
+  .hub-status {
+    @apply
+      rounded-full
+      px-2.5
+      py-1
+      font-body
+      text-[11px]
+      font-semibold
+      uppercase
+      tracking-label;
+  }
+
+  .hub-status-active {
+    @apply
+      bg-slate-100
+      text-primary;
+  }
+
+  .hub-status-archived {
+    @apply
+      bg-slate-100
+      text-slate-500;
+  }
+
+  .hub-card-body {
+    @apply
+      flex
+      flex-1
+      flex-col
+      px-5
+      pb-5;
+  }
+
+  .hub-card-title {
+    @apply
+      mb-2
+      font-display
+      text-headline-sm
+      font-bold
+      text-primary;
+  }
+
+  .hub-card-description {
+    @apply
+      line-clamp-2
+      flex-1
+      font-body
+      text-body-md
+      text-slate-600;
+  }
+
+  .hub-card-meta {
+    @apply
+      mt-4
+      pt-4
+      font-body
+      text-xs
+      font-medium
+      uppercase
+      tracking-label
+      text-slate-500;
+  }
+
+  .hub-card-meta > div {
+    @apply
+      flex
+      items-center
+      gap-1;
+  }
+
+  .hub-card-footer {
+    @apply
+      rounded-b-lg
+      bg-slate-50
+      p-4;
+  }
+
+  .hub-card-action {
+    @apply
+      flex
+      w-full
+      items-center
+      justify-center
+      gap-2
+      rounded
+      border
+      border-primary
+      bg-primary
+      py-2.5
+      font-body
+      text-sm
+      font-semibold
+      text-white
+      shadow-button
+      transition-all
+      duration-200;
+  }
+
+  .hub-card-action:hover {
+    @apply
+      bg-brand-hover
+      shadow-button-hover;
+
+    transform: translateY(-1px);
+  }
+
+  .hub-card-action:active {
+    @apply
+      bg-brand-active
+      shadow-button;
+
+    transform: translateY(0);
+  }
+
+  .hub-card-action-archived {
+    @apply
+      border-slate-300
+      bg-white
+      text-slate-500
+      opacity-80;
+  }
+
+
+  /* ---------------------------------------------------------
+     Create Hub
+     --------------------------------------------------------- */
+
+  .create-hub-card {
+    @apply
+      flex
+      min-h-[300px]
+      cursor-pointer
+      flex-col
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-dashed
+      border-slate-300
+      bg-white
+      p-8
+      transition-all
+      duration-200;
+  }
+
+  .create-hub-card:hover {
+    @apply
+      border-primary/50
+      bg-slate-50
+      shadow-soft;
+  }
+
+  .create-hub-icon {
+    @apply
+      mb-4
+      flex
+      h-16
+      w-16
+      items-center
+      justify-center
+      rounded-full
+      bg-slate-100
+      text-primary
+      shadow-none;
+  }
+
+  .create-hub-title {
+    @apply
+      text-center
+      font-display
+      text-headline-sm
+      font-bold
+      text-primary;
+  }
+
+  .create-hub-subtitle {
+    @apply
+      mt-2
+      text-center
+      font-body
+      text-xs
+      font-medium
+      uppercase
+      tracking-label
+      text-slate-500;
+  }
+
+}

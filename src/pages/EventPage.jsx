@@ -22,7 +22,7 @@ import { toast } from "sonner";
 
 import useEvents from "../hooks/useEvents.js";
 
-import DashboardShell from "../components/dashboard/DashboardShell.jsx";
+import DashboardShell from "../components/dashboard/layout/DashboardShell.jsx";
 
 import EventHero from "../components/dashboard/event/EventHero.jsx";
 import EventMeta from "../components/dashboard/event/EventMeta.jsx";

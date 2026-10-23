@@ -1,36 +1,89 @@
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-import DASHBOARD_HEADERS from "../data/dashboardHeaders.js";
+import DashboardShell from "../components/dashboard/layout/DashboardShell.jsx";
+import DashboardOverview from "../components/dashboard/DashboardOverview.jsx";
 
-import DashboardShell from "../components/dashboard/DashboardShell.jsx";
+import useEvents from "../hooks/useEvents.js";
+import useAuth from "../hooks/useAuth.js";
 
-const DashboardPage = () => { 
-  const Workspace = () => { 
-    return ( 
-      <div>Dashboard Metrics</div>
-    )
-  }
+function DashboardPage() {
+  const navigate = useNavigate();
+
+  const {
+    user,
+    isInitializing,
+  } = useAuth();
+
+  const {
+    events,
+    loading,
+    error,
+    refetch,
+  } = useEvents();
+
+  const handleViewEvent = (event) => {
+    const eventId = event?._id ?? event?.id;
+
+    if (!eventId) {
+      console.error(
+        "Cannot view event: missing event ID.",
+        event
+      );
+
+      return;
+    }
+
+    navigate(`/events/${eventId}`);
+  };
+
+  const handleRetry = () => {
+    if (typeof refetch === "function") {
+      refetch();
+    }
+  };
 
   const DashboardPath = () => { 
-    return (
+    return ( 
       <div className="flex gap-2"> 
         <Link to={"/dashboard"}>
           DASHBOARD
         </Link>
       </div>
-    )
+    );
+  };
+
+  const safeEvents = Array.isArray(events)
+    ? events
+    : [];
+
+  if (isInitializing) {
+    return (
+      <div className="dw-admin-initializing" role="status">
+        Initializing dashboard…
+      </div>
+    );
   }
 
   return (
-    <DashboardShell 
-      headerData={{ 
-        ...DASHBOARD_HEADERS.DASHBOARD,
-        path: <DashboardPath />
+    <DashboardShell
+      headerData={{
+        title: "Dashboard",
+        subtitle:
+          "Your overview of events, audience engagement, inquiries, and operations.",
+        path: <DashboardPath />,
       }}
-      workspace={<Workspace />}
       selected="dashboard"
+      workspace={
+        <DashboardOverview
+          events={safeEvents}
+          loading={loading}
+          error={error}
+          onRetry={handleRetry}
+          onViewEvent={handleViewEvent}
+        />
+      }
     />
   );
-};
+}
 
 export default DashboardPage;

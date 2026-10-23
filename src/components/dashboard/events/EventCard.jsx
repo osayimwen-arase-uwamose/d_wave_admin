@@ -4,7 +4,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 
-import formatISOTimestamp from "../../utils/formatISOTimestamp";
+import formatISOTimestamp from "../../../utils/formatISOTimestamp";
 
 const EventCard = ({ 
   event,
@@ -13,7 +13,7 @@ const EventCard = ({
   const isArchived = event.status === "archived";
   
   return (
-    <article className="hub-card">
+    <article className="hub-card group">
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#080e1c]">
         {event.flyerUrl ? (
           <img
@@ -49,9 +49,9 @@ const EventCard = ({
 
       </div>
 
-      <div className="hub-card-body">
+      <div className="event-card-body">
 
-        <h2 className="hub-card-title">
+        <h2 className="event-card-title">
           {event.title}
         </h2>
 

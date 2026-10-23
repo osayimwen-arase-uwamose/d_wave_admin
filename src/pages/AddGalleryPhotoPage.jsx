@@ -26,7 +26,7 @@ import useEvents from "../hooks/useEvents.js";
 import useFileUpload from "../hooks/useFileUpload.js";
 import useGallery from "../hooks/useGallery.js";
 
-import DashboardShell from "../components/dashboard/DashboardShell.jsx";
+import DashboardShell from "../components/dashboard/layout/DashboardShell.jsx";
 
 const MAX_CAPTION_LENGTH = 150;
 
@@ -210,6 +210,7 @@ const AddGalleryPhotoPage = () => {
       const publicId =
         uploadResult?.data?.publicId;
 
+        console.log(galleryPhotoUrl, publicId);
       if (
         !galleryPhotoUrl ||
         !publicId

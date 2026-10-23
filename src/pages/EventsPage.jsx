@@ -1,7 +1,7 @@
 import DASHBOARD_HEADERS from "../data/dashboardHeaders.js";
-import EventsGrid from "../components/dashboard/EventsGrid.jsx";
+import EventsGrid from "../components/dashboard/events/EventsGrid.jsx";
 
-import DashboardShell from "../components/dashboard/DashboardShell.jsx";
+import DashboardShell from "../components/dashboard/layout/DashboardShell.jsx";
 
 import useEvents from "../hooks/useEvents.js";
 import useAuth from "../hooks/useAuth.js";

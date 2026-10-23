@@ -16,7 +16,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-import DashboardHeader from "../components/dashboard/DashboardHeader.jsx";
+import DashboardHeader from "../components/dashboard/layout/DashboardHeader.jsx";
 import EventForm from "../components/dashboard/event/EventForm.jsx";
 
 import useEvents from "../hooks/useEvents.js";

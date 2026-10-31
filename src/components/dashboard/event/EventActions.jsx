@@ -48,7 +48,7 @@ return ( <div
      > <ImagePlus size={18} />
 
       <span>
-        Add Image to Gallery
+        Add Media to Gallery
       </span>
     </button>
   )}

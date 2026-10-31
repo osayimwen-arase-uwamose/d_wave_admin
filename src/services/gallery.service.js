@@ -1,12 +1,6 @@
 import ENDPOINTS from "../data/endpoints.js";
 import axiosPrivate from "../api/axiosPrivate.js";
 
-const { 
-  ADD_PHOTO,
-  DELETE_PHOTO,
-  UPDATE_CAPTION,
-} = ENDPOINTS.GALLERY;
-
 const addPhoto = async (
   eventId,
   photoData,

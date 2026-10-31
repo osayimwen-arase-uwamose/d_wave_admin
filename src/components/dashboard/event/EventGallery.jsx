@@ -225,8 +225,8 @@ onRefresh,
             text-text-muted
           "
         >
-          Photos added to this event will
-          appear here. Use Add Image to Gallery
+          Media added to this event will
+          appear here. Use Add Media to Gallery
           to get started.
         </p>
       </div>
@@ -259,7 +259,7 @@ onRefresh,
                 text-text-muted
               "
             >
-              Manage the photos and captions
+              Manage the photos, videos and captions
               associated with "{event.title}".
             </p>
           </div>
@@ -330,64 +330,37 @@ onRefresh,
                 "
               >
                 {/* Image */}
-                <div
-                  className="
-                    relative
-                    aspect-video
-                    bg-surface-container
-                  "
-                >
-                  {imageUrl ? (
+                <div className="relative aspect-video bg-surface-container">
+                  {image.mediaType === "video" && image.videoUrl ? (
+                    <video
+                      src={image.videoUrl}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="metadata"
+                      controls
+                      className="h-full w-full object-cover"
+                      aria-label={caption || `Gallery video ${index + 1}`}
+                    >
+                      Your browser does not support video playback.
+                    </video>
+                  ) : image.galleryPhotoUrl ? (
                     <img
-                      src={imageUrl}
-                      alt={
-                        caption ||
-                        `Gallery image ${index + 1}`
-                      }
-                      className="
-                        h-full
-                        w-full
-                        object-cover
-                      "
+                      src={image.galleryPhotoUrl}
+                      alt={caption || `Gallery image ${index + 1}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div
-                      className="
-                        flex
-                        h-full
-                        items-center
-                        justify-center
-                        text-text-muted
-                      "
-                    >
-                      <ImageOff
-                        size={28}
-                        aria-hidden="true"
-                      />
+                    <div className="flex h-full items-center justify-center text-text-muted">
+                      <ImageOff size={28} aria-hidden="true" />
                     </div>
                   )}
 
-                  <span
-                    className="
-                      absolute
-                      right-3
-                      top-3
-                      bg-primary/90
-                      px-2
-                      py-1
-                      font-mono
-                      text-[9px]
-                      font-bold
-                      uppercase
-                      tracking-[0.1em]
-                      text-white
-                    "
-                  >
-                    IMG_
-                    {String(index + 1).padStart(
-                      2,
-                      "0",
-                    )}
+                  <span className="absolute right-3 top-3 bg-primary/90 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.1em] text-white">
+                    {image.mediaType === "video" ? "VIDEO" : "IMG"}_
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
@@ -677,7 +650,7 @@ onRefresh,
                           />
                         )}
 
-                        Delete Photo
+                        Delete Media
                       </button>
                     </div>
                   )}
@@ -725,7 +698,7 @@ onRefresh,
             items-center
             justify-center
             overflow-y-auto
-            bg-primary/50
+            bg-black/50
             p-4
             backdrop-blur-[2px]
           "
@@ -822,7 +795,7 @@ onRefresh,
                   text-primary
                 "
               >
-                Delete this photo?
+                Delete this media?
               </h2>
 
               <p
@@ -837,7 +810,7 @@ onRefresh,
                 "
               >
                 This will remove the selected
-                photo from{" "}
+                media from{" "}
                 <span className="font-semibold text-text">
                   {event.title}
                 </span>.{" "}
@@ -900,7 +873,7 @@ onRefresh,
                   "
                 >
                   {photoToDelete.caption?.trim() ||
-                    "Untitled gallery photo"}
+                    "Untitled media item"}
                 </p>
 
                 <p
@@ -988,7 +961,7 @@ onRefresh,
                       aria-hidden="true"
                     />
 
-                    Deleting Photo...
+                    Deleting Media...
                   </>
                 ) : (
                   <>

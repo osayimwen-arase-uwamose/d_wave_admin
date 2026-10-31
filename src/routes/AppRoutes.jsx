@@ -14,6 +14,7 @@ import EventsPage from "../pages/EventsPage.jsx";
 import CreateEventPage from "../pages/CreateEventPage.jsx";
 import AddGalleryPhotoPage from "../pages/AddGalleryPhotoPage.jsx";
 import UpdateEventPage from "../pages/UpdateEventPage.jsx";
+import AddGalleryMediaPage from "../pages/AddGalleryMediaPage.jsx";
 
 const AppRoutes = () => {
   return (
@@ -44,7 +45,7 @@ const AppRoutes = () => {
 
         <Route 
           path="/dashboard/events/:eventId/gallery/add"
-          element={<AddGalleryPhotoPage />}
+          element={<AddGalleryMediaPage />}
         /> 
 
         <Route 

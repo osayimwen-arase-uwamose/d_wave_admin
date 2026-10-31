@@ -3,8 +3,6 @@ import {
   useState,
 } from "react";
 
-import axiosPrivate from "../api/axiosPrivate.js";
-
 import { 
   addPhoto,
   deletePhoto,
@@ -26,100 +24,65 @@ const useGallery = () => {
 
   const [updateCaptionError, setUpdateCaptionError] = useState(null);
 
-  const addGalleryPhoto = 
-  useCallback(
-    async (
-      eventId,
-      galleryPhotoData
-    ) => { 
-      setAdding(true);
-      setAddError(null);
+  const addGalleryMedia = useCallback(
+      async (eventId, mediaData) => {
+        setAdding(true);
+        setAddError(null);
 
-      try { 
-        const result = await addPhoto(
-          eventId,
-          galleryPhotoData,
-        );
+        try {
+          return await addPhoto(eventId, mediaData);
+        } catch (error) {
+          console.error("Failed to add gallery media:", error);
+          setAddError(error);
+          throw error;
+        } finally {
+          setAdding(false);
+        }
+      },
+      []
+    );
 
-        return result;
-      } catch (error) { 
-        console.error(
-          "Failed to add gallery photo: ",
-          error
-        );
-
-        setAddError(error);
-
-        throw error;
-      } finally { 
-        setAdding(false);
-      }
-    },
-    []);
-
-  const deleteGalleryPhoto = 
-    useCallback(
-      async (
-        eventId,
-        galleryPhotoId
-      ) => { 
+  const deleteGalleryMedia = useCallback(
+      async (eventId, galleryMediaId) => {
         setDeleting(true);
         setDeleteError(null);
 
-        try { 
-          const result = await deletePhoto(
-            eventId,
-            galleryPhotoId,
-          );
-
-          return result;
-        } catch (error) { 
-          console.error(
-            "Failed to delete gallery photo: ",
-            error
-          );
-
+        try {
+          return await deletePhoto(eventId, galleryMediaId);
+        } catch (error) {
+          console.error("Failed to delete gallery media:", error);
           setDeleteError(error);
-
           throw error;
-        } finally { 
+        } finally {
           setDeleting(false);
         }
       },
-      []);
+      []
+    );
 
-  const updateGalleryPhotoCaption = 
-    useCallback(
-      async (
-        eventId,
-        galleryPhotoId,
-        caption,
-      ) => { 
+  const updateGalleryMediaCaption = useCallback(
+      async (eventId, galleryMediaId, caption) => {
         setUpdatingCaption(true);
         setUpdateCaptionError(null);
 
-        try { 
-          const result = await updatePhotoCaption(
+        try {
+          return await updatePhotoCaption(
             eventId,
-            galleryPhotoId,
+            galleryMediaId,
+            caption
           );
-
-          return result;
-        } catch (error) { 
-          console.error(
-            "Failed to update gallery photo caption: ",
-            error
-          );
-
+        } catch (error) {
+          console.error("Failed to update gallery media caption:", error);
           setUpdateCaptionError(error);
-
           throw error;
-        } finally { 
+        } finally {
           setUpdatingCaption(false);
         }
       },
-      []);
-  return { 
+      []
+    );
+
+  return {
     adding,
     addError,
 
@@ -129,9 +92,9 @@ const useGallery = () => {
     updatingCaption,
     updateCaptionError,
 
-    addGalleryPhoto,
-    deleteGalleryPhoto,
-    updateGalleryPhotoCaption,
+    addGalleryMedia,
+    deleteGalleryMedia,
+    updateGalleryMediaCaption,
   };
 };
 

@@ -133,7 +133,7 @@ onRefresh,
       !photoToDelete?._id
     ) {
       setDeleteError(
-        "The event or gallery photo could not be identified.",
+        "The event or gallery media could not be identified.",
       );
       return;
     }
@@ -154,26 +154,19 @@ onRefresh,
       setPhotoToDelete(null);
 
       toast.success(
-        "Photo deleted from the gallery.",
+        "media deleted from the gallery.",
       );
 
       await onRefresh?.();
     } catch (error) {
-      console.error(
-        "Failed to delete gallery photo:",
-        error,
-      );
-
       setDeleteError(
-        error?.response?.data?.message ??
-          "Unable to delete this photo. Please try again.",
+          "Unable to delete this media. Please try again.",
       );
 
       setDeleteErrorId(galleryPhotoId);
 
       toast.error(
-        error?.response?.data?.message ??
-          "Unable to delete the gallery photo.",
+          "Unable to delete the gallery media.",
       );
     } finally {
       setDeletingPhotoId(null);
